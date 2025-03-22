@@ -471,4 +471,5 @@ def get_user_coins(current_user):
         return jsonify({'success': False, 'message': 'Coins information not found'}), 40
     return jsonify({'success': True, 'coins': current_user['coins']}), 200
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
