@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Coins - CharityHeart</title>
+    <link rel="stylesheet" href="/project/src/css/stylesbuy.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="buycoin.html" class="navbar-brand active">Express</a>
+        
+        <div class="navbar-menu">
+            <a href="#" class="navbar-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                Help Center
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </a>
+            <a href="#" class="navbar-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                User Center
+            </a>
+            <a href="#" class="navbar-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                More
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="left-section">
+            <h1 class="page-title">Express<br>Sell HSC with VND</h1>
+            <p class="page-subtitle">Buy and Sell HSC with various payment methods</p>
+        </div>
+        <form id="sell-form">
+            <div class="right-section">
+                <div class="tab-container">
+                    <a href="buycoin.html" class="tab">Buy</a>
+                    <div class="tab active">Sell</div>
+                </div>
+
+                <div class="tab-content">
+                    <div class="input-group">
+                        <div class="input-label">You Pay</div>
+                        <div class="input-container">
+                            <input type="text" class="input-field" value="69.12442396" id="payment-amount">
+                            <div class="currency-selector">
+                                <div class="currency-icon">HS</div>
+                                <div class="currency-name">HSC</div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-label">You Receive</div>
+                        <div class="input-container">
+                            <input type="text" class="input-field" value="150,000" id="receive-amount">
+                            <div class="currency-selector">
+                                <div class="currency-icon">đ</div>
+                                <div class="currency-name">VND</div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">
+                            <span class="info-icon">i</span>
+                            Estimated price
+                        </div>
+                        <div class="info-value">1 HSC = 2,170 VND</div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">
+                            <span class="info-icon">i</span>
+                            Fee rate
+                        </div>
+                        <div class="info-value">0.1000%</div>
+                    </div>
+
+                    <button type="submit" class="action-button">Sell Coin</button>
+                    <div id="sell-message" class="message"></div>
+                    <br>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="back-button-container">
+        <a href="/project/src/auth/dashboard.html" id="back" class="back-button">Back</a>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>HSCoin</h3>
+                <p>Making the world better, one coin for student.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: naithetoan2005@gmail.com</p>
+                <p>Phone: (+84) 869 744 213</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HSCoin. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/project/src/js/sell.js" type = "module"></script>
+</body>
+</html>

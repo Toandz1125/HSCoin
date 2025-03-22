@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSCoin - Make a Difference</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <!-- Using a placeholder image since the provided URL returns a 404 error -->
+            <img src="https://res.cloudinary.com/dslsdpxaf/image/upload/v1742269378/p4m25lkmwqquqwrxg2i0.png" alt="HSCoin Logo">
+            HSCoin
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#info-section">Introduction</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Innovation</a></li>
+                <li><a href="#">Participate</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </nav>
+        <div class="right-nav">
+            <a href="#">English ▼</a>
+            <a href="/project/src/auth/register.html">👤</a>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-main">
+            <a class="logo-center">
+                <h1>HSCoin</h1>
+            </a>
+            <p>The next generation of digital currency. Secure, fast, and revolutionary.</p>
+            <div class="cta-buttons">
+                <a href="/project/src/auth/register.html" class="cta-button primary-button">Get Started</a>
+                <a href="#info-section" class="cta-button secondary-button">Learn More</a>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section id = "info-section" class="info-section">
+            <h2>HSCoin is an innovative payment network and a new kind of money.</h2>
+            <p>Built on cutting-edge blockchain technology, HSCoin offers unprecedented security, lightning-fast transactions, and a truly decentralized financial ecosystem that puts the power back in your hands.</p>
+            
+            <div class="action-buttons">
+                <a href="/project/src/auth/register.html" class="action-button orange-button">Get started with HSCoin</a>
+                <a href="#" class="action-button outline-button">Choose your wallet</a>
+                <a href="/project/src/auth/login.html" class="action-button outline-button">Buy HSCoin</a>
+            </div>
+            
+            <div class="video-section">
+                <a href="#" class="video-button">
+                    <div class="play-icon">▶</div>
+                    <div class="video-text">What is HSCoin?</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Network Graphic -->
+         <h2>Blockchain Technology and Encryption </h2>
+        <div class="network-graphic"></div>
+
+        <section id="about" class="about-section">
+            <br>
+            <br>
+            <h2>Our Mission</h2>
+            <p>We connect generous donors with meaningful causes, ensuring transparency and impact in every contribution.</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>1000+</h3>
+                    <p>Donors</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Active Causes</p>
+                </div>
+                <div class="stat-item">
+                    <h3>HSC500K+</h3>
+                    <p>Raised</p>
+                </div>
+            </div>
+            <br>
+        </section>
+
+        <section id="causes" class="causes-section">
+            <br>
+            <br>
+            <h2>Current Causes</h2>
+            <div class="causes-grid" id="causes-container">
+                <!-- Causes will be loaded dynamically -->
+            </div>
+            <div id="grand-total"></div>
+            <br>
+            <br>
+            <br>
+        </section>
+        
+        <section id="causes" class="causes-section">
+            <h2>List Transaction</h2>
+                <div id="filter-buttons">
+                    <button id="all-donations" class="filter-btn">All</button>
+                    <button id="books" class="filter-btn">Books</button>
+                    <button id="trees" class="filter-btn">Trees</button>
+                    <button id="event tickets" class="filter-btn">Event Tickets</button>
+                    <button id="lab entrance ticket" class="filter-btn">Lab Entrance Ticket</button>
+                    <button id="Buy HSC" class="filter-btn">Buy Coin</button>
+                    <button id="Sell HSC" class="filter-btn">Sell Coin</button>
+                </div>
+        </section>
+        <div id="table-container">
+            <table id="donation-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Amount ($)</th>
+                        <th>Cause</th>
+                        <th>User Name</th>
+                        <th>User Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Donation history will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <br>
+    <br>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>HSCoin</h3>
+                <p>Making the world better, one coin for student.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: naithetoan2005@gmail.com</p>
+                <p>Phone: (+84) 869 744 213</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HSCoin. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const causeTotalsDiv = document.getElementById('causes-container');
+            const grandTotalDiv = document.getElementById('grand-total');
+        
+            try {
+                const response = await fetch('http://localhost:5000/api/donation_stats');
+                const data = await response.json();
+        
+                if (data.success) {
+                    const stats = data.stats;
+                    let totalsHtml = '<div class="stats-grid">';
+                    let grandTotal = 0;
+        
+                    for (const cause in stats) {
+                        const amount = stats[cause];
+                        grandTotal += amount;
+                        totalsHtml += `
+                            <div class="stat-card">
+                                <h3>${cause.charAt(0).toUpperCase() + cause.slice(1)}</h3>
+                                <p class="amount">$${amount.toFixed(2)}</p>
+                            </div>
+                        `;
+                    }
+                    totalsHtml += '</div>';
+                    causeTotalsDiv.innerHTML = totalsHtml;
+                    
+                    // Display grand total
+                    grandTotalDiv.innerHTML = `
+                        <div class="grand-total">
+                            <h3>Total Transaction</h3>
+                            <p class="amount">$${grandTotal.toFixed(2)}</p>
+                        </div>
+                    `;
+                } else {
+                    causeTotalsDiv.innerHTML = '<p class="error">Failed to load donation statistics.</p>';
+                }
+            } catch (error) {
+                causeTotalsDiv.innerHTML = '<p class="error">Error loading donation statistics. Please try again later.</p>';
+                console.error('Error:', error);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const donationTableBody = document.getElementById('donation-table').querySelector('tbody');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+
+            async function fetchDonations(cause = '') {
+                try {
+                    const response = await fetch(`http://localhost:5000/api/all_donations`);
+                    const data = await response.json();
+
+                    if (data.success) {
+                        const donations = data.donations;
+
+                        // Sắp xếp donations theo thời gian từ mới nhất đến cũ nhất
+                        donations.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                        // Lọc donations theo cause nếu có
+                        const filteredDonations = cause ? donations.filter(donation => donation.cause === cause) : donations;
+
+                        // Hiển thị donations
+                        displayDonations(filteredDonations);
+                    } else {
+                        donationTableBody.innerHTML = '<tr><td colspan="5" class="error">Không thể tải donations.</td></tr>';
+                    }
+                } catch (error) {
+                    donationTableBody.innerHTML = '<tr><td colspan="5" class="error">Lỗi khi tải donations. Vui lòng thử lại sau.</td></tr>';
+                    console.error('Error:', error);
+                }
+            }
+
+            function displayDonations(donations) {
+                donationTableBody.innerHTML = ''; // Xóa nội dung cũ
+                donations.forEach(donation => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${new Date(donation.date).toLocaleString()}</td>
+                        <td>${donation.amount.toFixed(2)}</td>
+                        <td>${donation.cause}</td>
+                        <td>${donation.user_name}</td>
+                        <td>${donation.user_email}</td>
+                    `;
+                    donationTableBody.appendChild(row);
+                });
+            }
+
+            // Lấy tất cả donations khi tải trang
+            fetchDonations();
+
+            // Thêm sự kiện cho các nút lọc
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const cause = button.id === 'all-donations' ? '' : button.id;
+                    fetchDonations(cause);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
