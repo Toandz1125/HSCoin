@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
             message.className = 'message error';
         }
         // Show success message and redirect
-        alert(`Thank you for your purchase! ${paymentAmount.value} HSC have been added to your account.`)
+        alert(`Thank you for your support! ${paymentAmount.value} HSC have been sold. You received ${receiveAmount.value} .`)
         window.location.href = "dashboard.html"
     })
 
