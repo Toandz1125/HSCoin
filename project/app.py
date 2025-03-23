@@ -244,7 +244,7 @@ def donate(current_user):
 def get_user_info(current_user):
     return jsonify({'success': True, 'user': current_user}), 200
 
-@app.route('/api/donations', methods=['GET'])
+@app.route('/auth/api/donations', methods=['GET'])
 @token_required
 def get_donations(current_user):
     if not os.path.exists('data/donations.json'):
