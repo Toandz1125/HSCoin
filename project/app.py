@@ -423,7 +423,7 @@ def payment_coin(current_user):
                 user['coins'] = user.get('coins', 0) + amount # Add coins, default to 0 if not present
                 break
             else:
-                return jsonify({'success': False,'message': 'Insufficient coins'}), 403
+                return jsonify({'success': False,'message': 'Insufficient coins. Redirecting to dashboard...'}), 403
     else:
         return jsonify({'success': False, 'message': 'User  not found'}), 404
 
