@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 message.className = 'message success';
                 sellCoin.reset();
                 setTimeout(() => {
-                    window.location.href = '/project/src/auth/dashboard.html';
+                    window.location.href = 'dashboard.html';
                 }, 1500);
             } else {
                 throw new Error(data.message || 'Purchase failed');
