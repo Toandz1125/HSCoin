@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 message.textContent = data.message || 'Purchase failed';
                 message.className = 'message error';
                 setTimeout(() => {
-                    window.location.href = '/project/src/auth/dashboard.html';
+                    window.location.href = 'dashboard.html';
                 }, 1500);
                 return;
             }
