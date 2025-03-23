@@ -340,7 +340,7 @@
     </main>
 
     <div class="back-button-container">
-        <a href="/project/src/auth/dashboard.html" id="back" class="back-button">Back</a>
+        <a href="dashboard.html" id="back" class="back-button">Back</a>
     </div>
 
     <footer>
@@ -391,7 +391,7 @@
                         message.className = 'message success';
                         sellCoin.reset();
                         setTimeout(() => {
-                            window.location.href = '/project/src/auth/dashboard.html';
+                            window.location.href = 'dashboard.html';
                         }, 1500);
                     } else {
                         throw new Error(data.message || 'Purchase failed');
