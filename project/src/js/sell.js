@@ -59,7 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = 'dashboard.html';
                 }, 1500);
             } else {
-                throw new Error(data.message || 'Purchase failed');
+                message.textContent = data.message || 'Purchase failed';
+                message.className = 'message error';
+                setTimeout(() => {
+                    window.location.href = '/project/src/auth/dashboard.html';
+                }, 1500);
+                return;
             }
         } catch (error) {
             message.textContent = error.message;
