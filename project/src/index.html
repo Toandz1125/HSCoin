@@ -42,8 +42,8 @@
 
         <!-- Info Section -->
         <section id = "info-section" class="info-section">
-            <h2>HSCoin là một mạng lưới thanh toán sáng tạo và là một loại tiền mới.</h2>
-            <p>Được xây dựng trên công nghệ blockchain tiên tiến, HSCoin cung cấp khả năng bảo mật chưa từng có, giao dịch nhanh như chớp và hệ sinh thái tài chính thực sự phi tập trung, giúp bạn nắm lại quyền kiểm soát.</p>
+            <h2>HSCoin là một mạng lưới buôn bán sáng tạo và là một loại tiền mới.</h2>
+            <p>Chúng tôi kết nối các sinh viên các trường đại học với các mục đích có ý nghĩa, tạo môi trường kinh doanh buôn bán cho sinh viên, hỗ trợ quản lý sinh viên, đảm bảo tính minh bạch và tác động trong mọi giao dịch.</p>
             
             <div class="action-buttons">
                 <a href="auth/register.html" class="action-button orange-button">Bắt đầu với HSCoin</a>
@@ -67,7 +67,7 @@
             <br>
             <br>
             <h2>Nhiệm vụ của chúng tôi</h2>
-            <p>Chúng tôi kết nối các sinh viên các trường đại học với các mục đích có ý nghĩa, tạo môi trường kinh doanh buôn bán cho sinh viên, hỗ trợ quản lý sinh viên, đảm bảo tính minh bạch và tác động trong mọi giao dịch.</p>
+            <p>Được xây dựng trên công nghệ blockchain tiên tiến, HSCoin cung cấp khả năng bảo mật chưa từng có, giao dịch nhanh như chớp và hệ sinh thái tài chính thực sự phi tập trung, giúp bạn nắm lại quyền kiểm soát.</p>
             <div class="stats">
                 <div class="stat-item">
                     <h3>1000+</h3>
@@ -183,10 +183,10 @@
                         </div>
                     `;
                 } else {
-                    causeTotalsDiv.innerHTML = '<p class="error">Failed to load donation statistics.</p>';
+                    causeTotalsDiv.innerHTML = '<p class="error">Không tải được số liệu thống kê giao dịch.</p>';
                 }
             } catch (error) {
-                causeTotalsDiv.innerHTML = '<p class="error">Error loading donation statistics. Please try again later.</p>';
+                causeTotalsDiv.innerHTML = '<p class="error">Lỗi khi tải số liệu thống kê giao dịch. Vui lòng thử lại sau.</p>';
                 console.error('Error:', error);
             }
         });
@@ -212,10 +212,10 @@
                         // Hiển thị donations
                         displayDonations(filteredDonations);
                     } else {
-                        donationTableBody.innerHTML = '<tr><td colspan="5" class="error">Không thể tải donations.</td></tr>';
+                        donationTableBody.innerHTML = '<tr><td colspan="5" class="error">Không thể tải giao dịch.</td></tr>';
                     }
                 } catch (error) {
-                    donationTableBody.innerHTML = '<tr><td colspan="5" class="error">Lỗi khi tải donations. Vui lòng thử lại sau.</td></tr>';
+                    donationTableBody.innerHTML = '<tr><td colspan="5" class="error">Lỗi khi tải giao dịch. Vui lòng thử lại sau.</td></tr>';
                     console.error('Error:', error);
                 }
             }
