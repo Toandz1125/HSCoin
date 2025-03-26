@@ -176,7 +176,7 @@ def donate(current_user):
 
     # Validate password
     if not password:
-        return jsonify({'success': False, 'message': 'Password là bắt buộc'}), 400
+        return jsonify({'success': False, 'message': 'Mật khẩu là bắt buộc'}), 400
 
     hashed_password = hashlib.sha256(password.encode()).hexdigest()
     if hashed_password != current_user['password']:
