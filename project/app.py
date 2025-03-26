@@ -141,7 +141,7 @@ def login():
                  and user['password'] == hashed_password), None)
     
     if not user:
-        return jsonify({'success': False, 'message': 'Email hoặc mật khẩu không hợp lệ'})
+        return jsonify({'success': False, 'message': 'Email hoặc mật khẩu không đúng'})
 
     token = jwt.encode({
         'email': user['email'],
