@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const token = localStorage.getItem('token');
         if (!token) {
-            throw new Error('You must be logged in to view your dashboard');
+            throw new Error('Bạn phải đăng nhập để xem bảng điều khiển của bạn');
         }
 
         // Fetch user information
