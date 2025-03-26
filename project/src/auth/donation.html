@@ -3,41 +3,41 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Donate - CharityHeart</title>
+        <title>Giao dịch - HSCoin</title>
         <link rel="stylesheet" href="../css/styles.css">
     </head>
     <body>
         <div class="donation-container">
             <div class="donation-box">
             <form id="donation-form" class="donation-form">
-                <h1>Make a Transaction</h1>
+                <h1>Thực hiện giao dịch</h1>
                 <div class="form-group-2">
-                    <label for="amount">Amount ($)</label>
+                    <label for="amount">Số lượng ($)</label>
                     <input type="number" id="amount" name="amount" min="1" step="0.01" required>
                 </div>
                 <div class="form-group-2">
-                    <label for="cause">Cause</label>
+                    <label for="cause">Nguồn sử dụng/label>
                     <select id="cause" name="cause" required>
-                        <option value="">Select a cause</option>
-                        <option value="books">Books</option>
-                        <option value="trees">Trees</option>
-                        <option value="event tickets">Event Tickets</option>
-                        <option value="lab entrance ticket">Lab Entrance Ticket</option>
+                        <option value="">Chọn 1 nguồn</option>
+                        <option value="books">Sách</option>
+                        <option value="trees">Cây</option>
+                        <option value="event tickets">Vé sự kiện</option>
+                        <option value="lab entrance ticket">Vé vào phòng nghiên cứu</option>
                     </select>
                 </div>
                 <div class="form-group-2">
-                    <label for="card-number">Card Number</label>
+                    <label for="card-number">Số thẻ</label>
                     <input type="text" id="card-number" name="card-number" required>
                 </div>
                 <div class="form-group-2">
-                    <label for="password">Password</label>
+                    <label for="password">Mật khẩu</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Donate</button>
+                <button type="submit" class="btn btn-primary">Thực hiện</button>
                 <div id="donation-message" class="message"></div>
             </form>
             <section id="causes" class="causes-section">
-                <a href="dashboard.html" class="back-link">← Back to Dashboard</a>
+                <a href="dashboard.html" class="back-link">← Quay lại Bảng điều khiển</a>
             </section>
         </div>
         <script src="../js/donation.js" type="module"></script>
