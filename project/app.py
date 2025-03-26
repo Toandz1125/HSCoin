@@ -89,9 +89,9 @@ def token_required(f):
             current_user = next((user for user in read_json_file(USER_FILE) 
                                if user['email'] == data['email']), None)
             if not current_user:
-                return jsonify({'message': 'Invalid token'}), 401
+                return jsonify({'message': 'Token không hợp lệ'}), 401
         except:
-            return jsonify({'message': 'Invalid token'}), 401
+            return jsonify({'message': 'Token không hợp lệ'}), 401
         return f(current_user, *args, **kwargs)
     return decorated
 
@@ -104,12 +104,12 @@ def register():
     password = data.get('password')
 
     if not all([name, email, password]):
-        return jsonify({'success': False, 'message': 'All fields are required'})
+        return jsonify({'success': False, 'message': 'Hãy điền đầy đủ thông tin'})
 
     users = read_json_file(USER_FILE)
     
     if any(user['email'] == email for user in users):
-        return jsonify({'success': False, 'message': 'Email already exists'})
+        return jsonify({'success': False, 'message': 'Email đã tồn tại'})
 
     hashed_password = hashlib.sha256(password.encode()).hexdigest()
     new_user = {
@@ -123,7 +123,7 @@ def register():
     users.append(new_user)
     write_json_file(USER_FILE, users)
     
-    return jsonify({'success': True, 'message': 'Registration successful'})
+    return jsonify({'success': True, 'message': 'Đăng ký thành công'})
 
 @app.route('/auth/api/login', methods=['POST'])
 def login():
@@ -132,7 +132,7 @@ def login():
     password = data.get('password')
 
     if not all([email, password]):
-        return jsonify({'success': False, 'message': 'All fields are required'})
+        return jsonify({'success': False, 'message': 'Hãy điền đầy đủ thông tin'})
 
     users = read_json_file(USER_FILE)
     hashed_password = hashlib.sha256(password.encode()).hexdigest()
@@ -141,7 +141,7 @@ def login():
                  and user['password'] == hashed_password), None)
     
     if not user:
-        return jsonify({'success': False, 'message': 'Invalid email or password'})
+        return jsonify({'success': False, 'message': 'Email hoặc mật khẩu không hợp lệ'})
 
     token = jwt.encode({
         'email': user['email'],
@@ -168,21 +168,21 @@ def donate(current_user):
 
     # Validate input fields
     if not all([amount, cause]):
-        return jsonify({'success': False, 'message': 'All fields are required'})
+        return jsonify({'success': False, 'message': 'Hãy điền đầy đủ thông tin'})
 
     # Validate amount is a positive number
     if amount <= 0:
-        return jsonify({'success': False, 'message': 'Amount must be a positive number'}), 400
+        return jsonify({'success': False, 'message': 'Số tiền phải là số dương'}), 400
 
     # Validate password
     if not password:
-        return jsonify({'success': False, 'message': 'Password is required'}), 400
+        return jsonify({'success': False, 'message': 'Password là bắt buộc'}), 400
 
     hashed_password = hashlib.sha256(password.encode()).hexdigest()
     if hashed_password != current_user['password']:
         return jsonify({
             'success': False,
-            'message': 'Invalid password'
+            'message': 'Mật khẩu không hợp lệ'
         }), 403
 
     # Validate cause
@@ -191,7 +191,7 @@ def donate(current_user):
     if cause not in valid_causes:
         return jsonify({
             'success': False, 
-            'message': 'Invalid cause selected'
+            'message': 'Nguyên nhân được chọn không hợp lệ'
         }), 400
 
     # Encrypt card number
@@ -204,7 +204,7 @@ def donate(current_user):
     if current_user['coins'] >= amount:
         current_user['coins'] -= amount  # Giảm coins khi donate
     else:
-        return jsonify({'success': False, 'message': 'Insufficient funds'}), 400
+        return jsonify({'success': False, 'message': 'Không đủ tiền'}), 400
     users = read_json_file(USER_FILE)
     for user in users:
         if user['email'] == current_user['email']:
@@ -229,7 +229,7 @@ def donate(current_user):
         donations.append(new_donation)
         write_json_file(DONATIONS_FILE, donations)
     except Exception as e:
-        return jsonify({'success': False, 'message': 'Failed to save donation data'}), 500
+        return jsonify({'success': False, 'message': 'Không lưu được dữ liệu giao dịch'}), 500
 
     # Return success response with donation details
     return jsonify({
