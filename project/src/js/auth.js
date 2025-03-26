@@ -18,7 +18,7 @@ class AuthService {
             }
             return { success: false, message: data.message };
         } catch (error) {
-            return { success: false, message: 'An error occurred. Please try again.' };
+            return { success: false, message: 'Đã xảy ra lỗi. Vui lòng thử lại.' };
         }
     }
 
@@ -35,7 +35,7 @@ class AuthService {
             const data = await response.json();
             return data;
         } catch (error) {
-            return { success: false, message: 'An error occurred. Please try again.' };
+            return { success: false, message: 'Đã xảy ra lỗi. Vui lòng thử lại.' };
         }
     }
 
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const result = await AuthService.login(email, password);
             if (result.success) {
-                messageEl.textContent = 'Login successful! Redirecting...';
+                messageEl.textContent = 'Đăng nhập thành công! Đang chuyển hướng...';
                 messageEl.className = 'message success';
                 setTimeout(() => {
                     window.location.href = 'dashboard.html';
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const result = await AuthService.register(name, email, password);
             if (result.success) {
-                messageEl.textContent = 'Registration successful! Redirecting to login...';
+                messageEl.textContent = 'Đăng ký thành công! Đang chuyển hướng đến trang đăng nhập...';
                 messageEl.className = 'message success';
                 setTimeout(() => {
                     window.location.href = 'login.html';
