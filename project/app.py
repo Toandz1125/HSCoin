@@ -116,7 +116,7 @@ def register():
         'name': name,
         'email': email,
         'password': hashed_password,
-        'created_at': datetime.datetime.now().isoformat(),
+        'created_at': datetime.now().isoformat(),
         'coins': 0
     }
     
