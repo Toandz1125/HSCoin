@@ -187,7 +187,7 @@ def donate(current_user):
 
     # Validate cause
     # valid_causes = ['academic incentive scholarship', 'full scholarship', 'government scholarship', 'partial scholarship']
-    valid_causes = ['books', 'trees', 'event tickets', 'lab entrance ticket']
+    valid_causes = ['sách', 'cây', 'vé sự kiện', 'vé vào phòng thí nghiệm']
     if cause not in valid_causes:
         return jsonify({
             'success': False, 
@@ -288,7 +288,7 @@ def buy_coin(current_user):
 
     # Validate input
     if amount is None or not isinstance(amount, (int, float)):
-        return jsonify({'success': False, 'message': 'Invalid coins value'}), 400
+        return jsonify({'success': False, 'message': 'Giá trị tiền không hợp lệ'}), 400
 
     # Read users from the JSON file
     users = read_json_file(USER_FILE)
@@ -300,12 +300,12 @@ def buy_coin(current_user):
             user['coins'] = user.get('coins', 0) + amount # Add coins, default to 0 if not present
             break
     else:
-        return jsonify({'success': False, 'message': 'User  not found'}), 404
+        return jsonify({'success': False, 'message': 'Không tìm thấy người dùng'}), 404
 
     # Write the updated users back to the JSON file
     write_json_file(USER_FILE, users)
 
-    cause = "Buy HSC"
+    cause = "Mua HSC"
 
     # Encrypt card number
     encrypted_card_number = sign_data_with_ecc("Encrypted-Card-Number")
@@ -329,7 +329,7 @@ def buy_coin(current_user):
         donations.append(new_donation)
         write_json_file(DONATIONS_FILE, donations)
     except Exception as e:
-        return jsonify({'success': False, 'message': 'Failed to save donation data'}), 500
+        return jsonify({'success': False, 'message': 'Không lưu được dữ liệu giao dịch'}), 500
 
     # Return success response with donation details
     return jsonify({
@@ -348,7 +348,7 @@ def sell_coin(current_user):
 
     # Validate input
     if amount is None or not isinstance(amount, (int, float)):
-        return jsonify({'success': False, 'message': 'Invalid coins value'}), 400
+        return jsonify({'success': False, 'message': 'Giá trị tiền không hợp lệ'}), 400
 
     # Read users from the JSON file
     users = read_json_file(USER_FILE)
@@ -361,14 +361,14 @@ def sell_coin(current_user):
                 user['coins'] = user.get('coins', 0) + amount # Add coins, default to 0 if not present
                 break
             else:
-                return jsonify({'success': False,'message': 'Insufficient coins. Redirecting to dashboard...'}), 403
+                return jsonify({'success': False,'message': 'Không đủ tiền. Đang chuyển hướng đến bảng điều khiển...'}), 403
     else:
-        return jsonify({'success': False, 'message': 'User  not found'}), 404
+        return jsonify({'success': False, 'message': 'Không tìm thấy người dùng'}), 404
 
     # Write the updated users back to the JSON file
     write_json_file(USER_FILE, users)
 
-    cause = "Sell HSC"
+    cause = "Bán HSC"
 
     # Encrypt card number
     encrypted_card_number = sign_data_with_ecc("Encrypted-Card-Number")
@@ -392,7 +392,7 @@ def sell_coin(current_user):
         donations.append(new_donation)
         write_json_file(DONATIONS_FILE, donations)
     except Exception as e:
-        return jsonify({'success': False, 'message': 'Failed to save donation data'}), 500
+        return jsonify({'success': False, 'message': 'Không lưu được dữ liệu giao dịch'}), 500
 
     # Return success response with donation details
     return jsonify({
@@ -410,7 +410,7 @@ def payment_coin(current_user):
 
     # Validate input
     if amount is None or not isinstance(amount, (int, float)):
-        return jsonify({'success': False, 'message': 'Invalid coins value'}), 400
+        return jsonify({'success': False, 'message': 'Giá trị tiền không hợp lệ'}), 400
 
     # Read users from the JSON file
     users = read_json_file(USER_FILE)
@@ -423,14 +423,14 @@ def payment_coin(current_user):
                 user['coins'] = user.get('coins', 0) + amount # Add coins, default to 0 if not present
                 break
             else:
-                return jsonify({'success': False,'message': 'Insufficient coins. Redirecting to dashboard...'}), 403
+                return jsonify({'success': False,'message': 'Không đủ tiền. Đang chuyển hướng đến bảng điều khiển...'}), 403
     else:
-        return jsonify({'success': False, 'message': 'User  not found'}), 404
+        return jsonify({'success': False, 'message': 'Không tìm thấy người dùng'}), 404
 
     # Write the updated users back to the JSON file
     write_json_file(USER_FILE, users)
 
-    cause = "Payment Tuition"
+    cause = "Đóng học phí"
 
     # Encrypt card number
     encrypted_card_number = sign_data_with_ecc("Encrypted-Card-Number")
@@ -454,7 +454,7 @@ def payment_coin(current_user):
         donations.append(new_donation)
         write_json_file(DONATIONS_FILE, donations)
     except Exception as e:
-        return jsonify({'success': False, 'message': 'Failed to save donation data'}), 500
+        return jsonify({'success': False, 'message': 'Không lưu được dữ liệu giao dịch'}), 500
 
     # Return success response with donation details
     return jsonify({
@@ -468,7 +468,7 @@ def payment_coin(current_user):
 @token_required
 def get_user_coins(current_user):
     if 'coins' not in current_user:
-        return jsonify({'success': False, 'message': 'Coins information not found'}), 40
+        return jsonify({'success': False, 'message': 'Không tìm thấy thông tin số lượng coins sở hữu'}), 40
     return jsonify({'success': True, 'coins': current_user['coins']}), 200
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
