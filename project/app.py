@@ -187,7 +187,7 @@ def donate(current_user):
 
     # Validate cause
     # valid_causes = ['academic incentive scholarship', 'full scholarship', 'government scholarship', 'partial scholarship']
-    valid_causes = ['sách', 'cây', 'vé sự kiện', 'vé vào phòng thí nghiệm']
+    valid_causes = ['books', 'trees', 'event tickets', 'lab entrance ticket']
     if cause not in valid_causes:
         return jsonify({
             'success': False, 
