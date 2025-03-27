@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const token = localStorage.getItem('token');
             if (!token) {
-                throw new Error('You must be logged in to donate');
+                throw new Error('Bạn phải đăng nhập để giao dịch');
             }
 
             const response = await fetch(`${API_URL}/donate`, {
