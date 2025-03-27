@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const token = localStorage.getItem('token');
             if (!token) {
-                throw new Error('You must be logged in to buy coins');
+                throw new Error('Bạn phải đăng nhập để mua tiền xu');
             }
 
             const response = await fetch(`${API_URL}/buy_coin`, {
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = 'dashboard.html';
                 }, 1500);
             } else {
-                throw new Error(data.message || 'Purchase failed');
+                throw new Error(data.message || 'Thanh toán thất bại');
             }
         } catch (error) {
             message.textContent = error.message;
