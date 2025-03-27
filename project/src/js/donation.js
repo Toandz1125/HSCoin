@@ -30,14 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
 
             if (data.success) {
-                message.textContent = 'Thank you for your donation! Redirecting to dashboard...';
+                message.textContent = 'Cảm ơn bạn đã sử dụng! Đang chuyển hướng đến bảng điều khiển...';
                 message.className = 'message success';
                 form.reset();
                 setTimeout(() => {
                     window.location.href = 'dashboard.html';
                 }, 1500);
             } else {
-                throw new Error(data.message || 'Donation failed');
+                throw new Error(data.message || 'Giao dịch thất bại');
             }
         } catch (error) {
             message.textContent = error.message;
