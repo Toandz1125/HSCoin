@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const token = localStorage.getItem('token');
             if (!token) {
-                throw new Error('You must be logged in to buy coins');
+                throw new Error('Bạn phải đăng nhập để mua tiền xu');
             }
             const coin = parseFloat(paymentAmount.value.replace(/,/g, ''))
             const sellcoin = -coin
@@ -52,14 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = await response.json();
 
             if (data.success) {
-                message.textContent = 'Purchase successful! Your coin balance has been updated.';
+                message.textContent = 'Đã bán thành công! Số dư tiền xu của bạn đã được cập nhật.';
                 message.className = 'message success';
                 sellCoin.reset();
                 setTimeout(() => {
                     window.location.href = 'dashboard.html';
                 }, 1500);
             } else {
-                message.textContent = data.message || 'Purchase failed';
+                message.textContent = data.message || 'Giao dịch thất bại';
                 message.className = 'message error';
                 setTimeout(() => {
                     window.location.href = 'dashboard.html';
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
             message.className = 'message error';
         }
         // Show success message and redirect
-        alert(`Thank you for your support! ${paymentAmount.value} HSC have been sold. You received ${receiveAmount.value} vnđ.`)
+        alert(`Cảm ơn sự ủng hộ của bạn! ${paymentAmount.value} HSC vừa được bán. You nhận được ${receiveAmount.value} vnđ.`)
         window.location.href = "dashboard.html"
     })
 
