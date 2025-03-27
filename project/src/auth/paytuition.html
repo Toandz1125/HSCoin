@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuition Payment Portal</title>
+    <title>Cổng thanh toán học phí</title>
     <style>
         :root {
             --primary: #4f46e5;
@@ -256,83 +256,83 @@
             <a href="#" class="logo">EduPay</a>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Tuition</a></li>
-                    <li><a href="#">Financial Aid</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="#">Học phí</a></li>
+                    <li><a href="#">Hỗ trợ tài chính</a></li>
+                    <li><a href="#">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <h1 class="page-title">Tuition Payment</h1>
+        <h1 class="page-title">Thanh toán học phí</h1>
 
         <div class="payment-container">
             <div class="payment-form">
-                <h2 class="form-title">Payment Information</h2>
+                <h2 class="form-title">Thông tin thanh toán</h2>
                 <form id="tuition-payment-form">
                     <div class="form-group">
-                        <label for="student-id">Student ID</label>
+                        <label for="student-id">ID Học Sinh</label>
                         <input type="text" id="student-id" name="student-id" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="student-name">Student Name</label>
+                        <label for="student-name">Tên Học Sinh</label>
                         <input type="text" id="student-name" name="student-name" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="payment-method">Payment Method</label>
+                        <label for="payment-method">Phương thức thanh toán</label>
                         <select id="payment-method" name="payment-method" required>
-                            <option value="">Select payment method</option>
-                            <option value="credit-card">Credit Card</option>
-                            <option value="debit-card">Debit Card</option>
-                            <option value="bank-transfer">Bank Transfer</option>
+                            <option value="">Chọn phương thức thanh toán</option>
+                            <option value="credit-card">Thẻ tín dụng</option>
+                            <option value="debit-card">Thẻ ghi nợ</option>
+                            <option value="bank-transfer">Chuyển khoản ngân hàng</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="card-number">Card Number</label>
+                        <label for="card-number">Số thẻ</label>
                         <input type="text" id="card-number" name="card-number" placeholder="XXXX XXXX XXXX XXXX">
                     </div>
 
                     <div class="form-group">
-                        <label for="cardholder-name">Cardholder Name</label>
+                        <label for="cardholder-name">Tên chủ thẻ</label>
                         <input type="text" id="cardholder-name" name="cardholder-name">
                     </div>
 
                     <div class="form-group">
-                        <label for="payment-amount">Payment Amount ($)</label>
+                        <label for="payment-amount">Số lượng thanh toán (HSC)</label>
                         <input type="number" id="payment-amount" name="payment-amount" min="1" step="0.01" required>
                     </div>
 
-                    <button type="submit" class="btn btn-block">Make Payment</button>
+                    <button type="submit" class="btn btn-block">Thanh toán</button>
                     <div id="payment-message" class="message"></div>
                     <br>
                 </form>
             </div>
 
             <div class="payment-summary">
-                <h2 class="summary-title">Payment Summary</h2>
+                <h2 class="summary-title">Tóm tắt thanh toán</h2>
                 <div class="summary-item">
-                    <span>Tuition Fee</span>
+                    <span>Học phí</span>
                     <span>$8,500.00</span>
                 </div>
                 <div class="summary-item">
-                    <span>Technology Fee</span>
+                    <span>Phí công nghệ</span>
                     <span>$250.00</span>
                 </div>
                 <div class="summary-item">
-                    <span>Activity Fee</span>
+                    <span>Phí hoạt động</span>
                     <span>$150.00</span>
                 </div>
                 <div class="summary-item">
-                    <span>Health Services</span>
+                    <span>Dịch vụ y tế</span>
                     <span>$100.00</span>
                 </div>
                 <div class="summary-item summary-total">
-                    <span>Total Due</span>
+                    <span>Tổng</span>
                     <span>$9,000.00</span>
                 </div>
             </div>
@@ -340,23 +340,23 @@
     </main>
 
     <div class="back-button-container">
-        <a href="dashboard.html" id="back" class="back-button">Back</a>
+        <a href="dashboard.html" id="back" class="back-button">Quay lại</a>
     </div>
 
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>HSCoin</h3>
-                <p>Making the world better, one coin for student.</p>
+                <p>Một môi trường mới, một đồng tiền cho sinh viên.</p>
             </div>
             <div class="footer-section">
-                <h3>Contact</h3>
+                <h3>Liên lạc</h3>
                 <p>Email: naithetoan2005@gmail.com</p>
-                <p>Phone: (+84) 869 744 213</p>
+                <p>Số điện thoại: (+84) 869 744 213</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 HSCoin. All rights reserved.</p>
+            <p>&copy; 2025 HSCoin. Mọi quyền được bảo lưu.</p>
         </div>
     </footer>
 
@@ -387,7 +387,7 @@
                     const data = await response.json();
 
                     if (data.success) {
-                        message.textContent = 'Purchase successful! Your coin balance has been updated.';
+                        message.textContent = 'Đã thanh toán thành công! Số dư tiền xu của bạn đã được cập nhật.';
                         message.className = 'message success';
                         sellCoin.reset();
                         setTimeout(() => {
@@ -406,7 +406,7 @@
                     message.className = 'message error';
                 }
                 // Show success message and redirect
-                alert(`Thank you for your support! ${paymentAmount.value} HSC have been paid for tutition.`)
+                alert(`Cảm ơn sự ủng hộ của bạn! ${paymentAmount.value} HSC đã được trả học phí.`)
                 window.location.href = "dashboard.html"
             })
         
