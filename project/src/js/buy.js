@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = await response.json();
 
             if (data.success) {
-                message.textContent = 'Purchase successful! Your coin balance has been updated.';
+                message.textContent = 'Đã mua thành công! Số dư tiền xu của bạn đã được cập nhật.';
                 message.className = 'message success';
                 buyCoin.reset();
                 setTimeout(() => {
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             message.className = 'message error';
         }
         // Show success message and redirect
-        alert(`Thank you for your purchase! ${receiveAmount.value} HSC have been added to your account.`)
+        alert(`Cảm ơn sự ủng hộ của bạn! ${receiveAmount.value} HSC được thêm vào tài khoản của bạn.`)
         window.location.href = "dashboard.html"
     })
 
